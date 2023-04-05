@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D863E2CF-77EA-4927-85BC-15A479C2369B}</ProjectGuid>
+    <ProjectGuid>{0C074102-D4C8-4491-86BD-0B142E91D87B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <StartupObject>Wordle.My.MyApplication</StartupObject>
     <RootNamespace>Wordle</RootNamespace>

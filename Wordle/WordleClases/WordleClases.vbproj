@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D7015D86-04CA-4E5D-B698-A4D088FA5D48}</ProjectGuid>
+    <ProjectGuid>{D7675B03-CC5D-4E02-A2DE-BCA5B962F0EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>WordleClases</RootNamespace>
     <AssemblyName>WordleClases</AssemblyName>

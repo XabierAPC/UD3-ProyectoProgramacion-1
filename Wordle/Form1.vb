@@ -7,12 +7,13 @@ Public Class Form1
     Dim tamanoLabel As Integer = 50
     Dim tamanoMargen As Integer = 5
     Dim indiceLabelActual As Integer = 0
-    Dim indiceMaxCeldasRellenadasPorFila As Integer = numeroColumnas
+    Dim indiceMaxCeldasRellenadasPorFila As Integer
 
     Dim palabraFormando As String
 
     Dim wordle As Diccionario
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.TopMost = True
         Dim directorioSolucion As String = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)) ''busca donde esta el .sln
         Dim rutaCompletaDirectorioPadreSln As String = Directory.GetParent(directorioSolucion).FullName ''te busca la ruta absoluta de cada ordenador hasta la carpeta que contiene el .sln
         Dim rutaPalabrasLeer As String = Path.Combine(rutaCompletaDirectorioPadreSln, "PalabrasLeer") ''de la ruta abs ya obtenida se mueve a la carpeta PalabrasLeer
@@ -20,6 +21,9 @@ Public Class Form1
 
 
         wordle = New Diccionario(accesoFicherPalabras)
+
+        indiceLabelActual = Me.Controls.Count
+        indiceMaxCeldasRellenadasPorFila = numeroColumnas + indiceLabelActual
 
         For i As Integer = 0 To numeroFilas - 1
             For j As Integer = 0 To numeroColumnas - 1
@@ -38,34 +42,34 @@ Public Class Form1
 
 
 
+        For i As Integer = 0 To Me.Controls.Count - 1
+            If TypeOf Me.Controls(i) Is Label Then
+                Debug.WriteLine(i)
+            End If
+        Next
 
 
 
     End Sub
 
-    Dim palabrasPermitidas As String = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ" ''TODO const arriba del todo x orden y convencion
+
 
     Private Sub Form1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
+        Dim palabrasPermitidas As String = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
         If indiceLabelActual < numeroFilas * numeroColumnas Then
             Dim currentLabel As Label = CType(Me.Controls(indiceLabelActual), Label)
             Debug.WriteLine($"Current Label: {indiceLabelActual}")
-            If e.KeyChar = ChrW(Keys.Back) AndAlso indiceLabelActual >= indiceMaxCeldasRellenadasPorFila - 5 Then
+
+            If e.KeyChar = ChrW(Keys.Back) AndAlso indiceLabelActual >= indiceMaxCeldasRellenadasPorFila - numeroColumnas Then
                 If palabraFormando.Length > 0 Then
                     palabraFormando = palabraFormando.Substring(0, palabraFormando.Length - 1)
                 End If
 
-                If indiceLabelActual = indiceMaxCeldasRellenadasPorFila Then
-                    currentLabel = CType(Me.Controls(indiceLabelActual - 1), Label)
-                    currentLabel.Text = ""
-                    indiceLabelActual -= 2
+                currentLabel = CType(Me.Controls(indiceLabelActual - 1), Label)
+                currentLabel.Text = ""
+                If indiceLabelActual <> indiceMaxCeldasRellenadasPorFila - numeroColumnas Then
+                    indiceLabelActual -= 1
 
-                Else
-
-                    If indiceLabelActual <> indiceMaxCeldasRellenadasPorFila - 5 Then
-                        indiceLabelActual -= 1
-
-                    End If
-                    currentLabel.Text = ""
                 End If
 
 
@@ -100,6 +104,7 @@ Public Class Form1
 
             ''TODO al pressionar return eliminar palabras
             Debug.WriteLine($"End Label: {indiceLabelActual}")
+            Debug.WriteLine(palabraFormando)
         End If
     End Sub
 End Class

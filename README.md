@@ -1,2 +1,3 @@
 # UD3-ProyectoProgramacion
-### Ricardo, Ruben, Xabier
+### Ricardo, Rubén, Xabier
+#####descripcion:Juego a realizar :Wordle

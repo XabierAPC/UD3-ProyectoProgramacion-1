@@ -37,4 +37,30 @@ Public Class Diccionario
         Dim randomIndex = New Random().Next(0, numeroPalabras)
         Return palabrasPosibles(randomIndex)
     End Function
+
+    Public Function GreenYellowGray(pal As String, dificultad As Integer) As Integer()
+        'Dim palab As Palabra = GetRandomWord(dificultad)
+        Dim palab As String = "apple"
+        Dim pAr(pal.Length) As Integer
+
+        For i = 0 To palab.Length - 1
+            If palab.Chars(i) = pal.Chars(i) Then
+                pAr(i) = 0
+            Else
+                For j = 0 To pal.Length - 1
+                    If palab.Chars(j) = pal.Chars(i) Then
+                        pAr(i) = 1
+                        Exit For
+                    Else
+                        pAr(i) = 2
+                    End If
+
+                Next
+
+            End If
+
+
+        Next
+        Return pAr
+    End Function
 End Class

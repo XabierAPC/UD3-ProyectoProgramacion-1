@@ -11,6 +11,8 @@ Public Class Form1
 
     Dim palabraFormando As String
 
+    Dim sumLabel As Integer = 0
+
     Dim wordle As Diccionario
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.TopMost = True
@@ -85,6 +87,23 @@ Public Class Form1
                     palabraFormando = palabraFormando.Substring(0, 5)
 
                     If wordle.palbraEsValida(palabraFormando) Then
+                        'Realiza la operación de poner los labels al color correspondiente
+                        'Green: Correcto, en la misma posición
+                        'Yellow: Correcto, pero en otra posición
+                        'Gray: La letra no existe en la palabra
+                        For i = 0 To palabraFormando.Length
+                            Dim leterLabel As Label = CType(Me.Controls(i + sumLabel), Label)
+
+                            If wordle.GreenYellowGray(palabraFormando, 1)(i) = 0 Then
+                                leterLabel.BackColor = Color.Green
+                            ElseIf wordle.GreenYellowGray(palabraFormando, 1)(i) = 1 Then
+                                leterLabel.BackColor = Color.Yellow
+                            ElseIf wordle.GreenYellowGray(palabraFormando, 1)(i) = 2 Then
+                                leterLabel.BackColor = Color.Gray
+                            End If
+                        Next
+                        currentLabel.BackColor = Color.Transparent
+                        sumLabel += 5
                         indiceMaxCeldasRellenadasPorFila += 5
                         palabraFormando = ""
                     Else

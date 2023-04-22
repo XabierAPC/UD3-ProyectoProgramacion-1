@@ -40,7 +40,7 @@ Public Class Diccionario
 
     Public Function GreenYellowGray(pal As String, dificultad As Integer) As Integer()
         'Dim palab As Palabra = GetRandomWord(dificultad)
-        Dim palab As String = "apple"
+        Dim palab As String = "apple".ToUpper
         Dim pAr(pal.Length) As Integer
 
         For i = 0 To palab.Length - 1

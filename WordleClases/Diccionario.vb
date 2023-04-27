@@ -2,8 +2,14 @@
 
 Public Class Diccionario
     Private ReadOnly Palabras As New List(Of Palabra)
+    Public Enum TipoAcierto
+        Acertado
+        Regular
+        Erroneo
+    End Enum
 
     Public Sub New(rutaArchivoLeer As String)
+
         Dim lineas() As String = File.ReadAllLines(rutaArchivoLeer)
         For Each linea In lineas
             Dim partes() As String = linea.Split(",")
@@ -38,21 +44,24 @@ Public Class Diccionario
         Return palabrasPosibles(randomIndex)
     End Function
 
-    Public Function GreenYellowGray(pal As String, dificultad As Integer) As Integer()
+    Public Function GreenYellowGray(pal As String, dificultad As Integer) As TipoAcierto()
+        ''TODO no se repita la misma palbra dos veces en una misma sesion
+        ''TODO obtener la palbra valida actual
+
         'Dim palab As Palabra = GetRandomWord(dificultad)
         Dim palab As String = "apple".ToUpper
-        Dim pAr(pal.Length) As Integer
+        Dim pAr(pal.Length) As TipoAcierto
 
         For i = 0 To palab.Length - 1
             If palab.Chars(i) = pal.Chars(i) Then
-                pAr(i) = 0
+                pAr(i) = TipoAcierto.Acertado
             Else
                 For j = 0 To pal.Length - 1
                     If palab.Chars(j) = pal.Chars(i) Then
-                        pAr(i) = 1
+                        pAr(i) = TipoAcierto.Regular
                         Exit For
                     Else
-                        pAr(i) = 2
+                        pAr(i) = TipoAcierto.Erroneo
                     End If
 
                 Next

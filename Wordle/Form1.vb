@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports WordleClases
+Imports WorldleUtilidades
 Public Class Form1
     Dim numeroFilas As Integer = 6
     Dim numeroColumnas As Integer = 5
@@ -17,6 +18,8 @@ Public Class Form1
 
     Dim wordle As Diccionario
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim d As DialogResult
+
         Me.WindowState = FormWindowState.Maximized
         Dim directorioSolucion As String = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)) ''busca donde esta el .sln
         Dim rutaCompletaDirectorioPadreSln As String = Directory.GetParent(directorioSolucion).FullName ''te busca la ruta absoluta de cada ordenador hasta la carpeta que contiene el .sln
@@ -102,9 +105,9 @@ Public Class Form1
                     Dim leterLabel As Label = CType(Me.Controls(i + indiceMinimoCeldas), Label)
                     Dim intCorrespondienteAChar() As Integer = wordle.GreenYellowGray(palabraFormando, 1)
 
-                    If intCorrespondienteAChar(i) = 0 Then
+                    If intCorrespondienteAChar(i) = Diccionario.TipoAcierto.Acertado Then
                         leterLabel.BackColor = Color.Green
-                    ElseIf intCorrespondienteAChar(i) = 1 Then
+                    ElseIf intCorrespondienteAChar(i) = Diccionario.TipoAcierto.Regular Then
                         leterLabel.BackColor = Color.Yellow
                     Else
                         leterLabel.BackColor = Color.Gray
@@ -178,4 +181,11 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub GroupBox2_Enter(sender As Object, e As EventArgs) Handles GroupBox2.Enter
+
+    End Sub
+
+    Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+
+    End Sub
 End Class

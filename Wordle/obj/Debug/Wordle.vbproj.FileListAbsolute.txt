@@ -49,3 +49,6 @@ C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\ob
 C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\obj\Debug\Wordle.exe
 C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\obj\Debug\Wordle.xml
 C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\obj\Debug\Wordle.pdb
+C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\bin\Debug\WorldleUtilidades.dll
+C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\bin\Debug\WorldleUtilidades.pdb
+C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\bin\Debug\WorldleUtilidades.xml

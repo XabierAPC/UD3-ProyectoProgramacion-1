@@ -4,21 +4,25 @@ Imports WorldleUtilidades
 Public Class Form1
     Dim numeroFilas As Integer = 6
     Dim numeroColumnas As Integer = 5
-    Dim tamanoLabel As Integer = 50
+    Dim tamanoLabel As Integer = 62
     Dim tamanoMargen As Integer = 5
 
     Dim fix As Integer
+
+    Dim inicioLabels As Integer
+    Dim finLabels As Integer
 
     Dim indiceLabelActual As Integer
     Dim indiceMaximoCeldas As Integer
     Dim indiceMinimoCeldas As Integer
     Dim palabraFormando As String
 
+    Dim wasLoaded As Boolean = False
+
     Private WithEvents _keyboardListener As New KeyboardListener()
 
     Dim wordle As Diccionario
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim d As DialogResult
 
         Me.WindowState = FormWindowState.Maximized
         Dim directorioSolucion As String = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)) ''busca donde esta el .sln
@@ -28,7 +32,9 @@ Public Class Form1
 
 
         wordle = New Diccionario(accesoFicherPalabras)
+        wordle.GetRandomWord(numeroColumnas)
         fix = Me.Controls.Count
+        inicioLabels = fix
         indiceLabelActual = Me.Controls.Count
         indiceMaximoCeldas = numeroColumnas + indiceLabelActual
         indiceMinimoCeldas = indiceLabelActual
@@ -36,8 +42,14 @@ Public Class Form1
         Dim posY = Me.Height / 2
         Dim posX = Me.Width / 2
 
+        grpTeclado.Location = New Point(posX - (grpTeclado.Size.Width / 2), Me.Height - grpTeclado.Size.Height)
+        grpMenu.Location = New Point(posX - (grpMenu.Size.Width / 2), 0)
+
+
         posX = posX - (numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
         posY = posY - (numeroFilas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
+        Dim font As New Font("Arial", 24, FontStyle.Bold)
+
 
         For i As Integer = 0 To numeroFilas - 1
             posX = posX + ((numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2) - ((numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2)
@@ -49,7 +61,8 @@ Public Class Form1
                     .TextAlign = ContentAlignment.MiddleCenter,
                     .Left = j * (tamanoLabel + tamanoMargen) + tamanoMargen,
                     .Top = i * (tamanoLabel + tamanoMargen) + tamanoMargen,
-                    .Location = New Point(posX, posY)
+                    .Location = New Point(posX, posY),
+                    .Font = font
                 }
                 posX += nuevoLabel.Width + tamanoMargen
                 Me.Controls.Add(nuevoLabel)
@@ -64,15 +77,18 @@ Public Class Form1
             End If
         Next
 
+        finLabels = Me.Controls.Count - 1
+        wasLoaded = True
     End Sub
 
+
     Private Sub _keyboardListener_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles _keyboardListener.KeyDown
-        Dim palabrasPermitidas As String = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+        Dim caracteresPermitidos As String = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
         If indiceLabelActual - fix < numeroFilas * numeroColumnas Then
             Dim currentLabel As Label = CType(Me.Controls(indiceLabelActual), Label)
             Debug.WriteLine($"Current Label: {indiceLabelActual}")
 
-            If palabrasPermitidas.Contains(e.KeyCode.ToString().ToUpper()) Then ''si no se ha pulsado eneter, se busca si la tecla esta en abecedario, si es asi haz ....
+            If caracteresPermitidos.Contains(e.KeyCode.ToString().ToUpper()) Then ''si no se ha pulsado eneter, se busca si la tecla esta en abecedario, si es asi haz ....
                 If indiceLabelActual <> indiceMaximoCeldas Then
                     indiceLabelActual += 1
                     currentLabel.Text = e.KeyCode.ToString()
@@ -89,28 +105,31 @@ Public Class Form1
             End If
 
             If e.KeyCode = Keys.Return Then
+
+
+
+
                 If indiceLabelActual <> indiceMaximoCeldas Then
-                    MsgBox("Lenght != col")
                     Exit Sub
                 End If
 
                 palabraFormando = palabraFormando.Substring(0, numeroColumnas)
 
                 If Not wordle.palbraEsValida(palabraFormando) Then
-                    MsgBox("La palabra no existe")
                     Exit Sub
                 End If
 
                 For i = 0 To palabraFormando.Length - 1
                     Dim leterLabel As Label = CType(Me.Controls(i + indiceMinimoCeldas), Label)
-                    Dim intCorrespondienteAChar() As Integer = wordle.GreenYellowGray(palabraFormando, 1)
+                    Dim intCorrespondienteAChar() As Integer = wordle.GreenYellowGray(palabraFormando)
 
                     If intCorrespondienteAChar(i) = Diccionario.TipoAcierto.Acertado Then
-                        leterLabel.BackColor = Color.Green
+                        leterLabel.BackColor = ColorTranslator.FromHtml("#538d4e")
+                        'cont
                     ElseIf intCorrespondienteAChar(i) = Diccionario.TipoAcierto.Regular Then
-                        leterLabel.BackColor = Color.Yellow
+                        leterLabel.BackColor = ColorTranslator.FromHtml("#b59f3b")
                     Else
-                        leterLabel.BackColor = Color.Gray
+                        leterLabel.BackColor = ColorTranslator.FromHtml("#3a3a3c")
                     End If
                 Next
 
@@ -153,7 +172,7 @@ Public Class Form1
 
         For i = 0 To palabraFormando.Length - 1
             Dim leterLabel As Label = CType(Me.Controls(i + indiceMinimoCeldas), Label)
-            Dim intCorrespondienteAChar() As Integer = wordle.GreenYellowGray(palabraFormando, 1)
+            Dim intCorrespondienteAChar() As Integer = wordle.GreenYellowGray(palabraFormando)
 
             If intCorrespondienteAChar(i) = 0 Then
                 leterLabel.BackColor = Color.Green
@@ -181,11 +200,24 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub GroupBox2_Enter(sender As Object, e As EventArgs) Handles GroupBox2.Enter
+    Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
+        Dim posY = Me.Height / 2
+        Dim posX = Me.Width / 2
 
-    End Sub
+        grpTeclado.Location = New Point(posX - (grpTeclado.Size.Width / 2), Me.Height - grpTeclado.Size.Height)
+        grpMenu.Location = New Point(posX - (grpMenu.Size.Width / 2), 0)
+        If wasLoaded Then
+            posX = Me.Width / 2 - (numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
+            posY = Me.Height / 2 - (numeroFilas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
 
-    Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+            For i As Integer = fix To numeroFilas * numeroColumnas + 1
+                Dim labelToUpdate As Label = CType(Me.Controls(i), Label)
+                Dim row As Integer = (i - inicioLabels) \ numeroColumnas
+                Dim col As Integer = (i - inicioLabels) Mod numeroColumnas
+                labelToUpdate.Left = posX + col * (tamanoLabel + tamanoMargen) + tamanoMargen
+                labelToUpdate.Top = posY + row * (tamanoLabel + tamanoMargen) + tamanoMargen
+            Next
+        End If
 
     End Sub
 End Class

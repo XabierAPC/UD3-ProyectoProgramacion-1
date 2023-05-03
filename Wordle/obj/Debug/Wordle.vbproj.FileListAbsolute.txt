@@ -52,3 +52,5 @@ C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\ob
 C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\bin\Debug\WorldleUtilidades.dll
 C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\bin\Debug\WorldleUtilidades.pdb
 C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\bin\Debug\WorldleUtilidades.xml
+C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\bin\Debug\nunit.framework.dll
+C:\Users\sprop\Desktop\Nueva carpeta (5)\io\UD3-ProyectoProgramacion-1\Wordle\bin\Debug\nunit.framework.xml

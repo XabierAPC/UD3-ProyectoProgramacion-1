@@ -2,6 +2,8 @@
 
 Public Class Diccionario
     Private ReadOnly Palabras As New List(Of Palabra)
+
+    Private palabraGenerada As Palabra
     Public Enum TipoAcierto
         Acertado
         Regular
@@ -34,22 +36,19 @@ Public Class Diccionario
         Return False
     End Function
 
-    Public Function GetRandomWord(dificultad As Integer) As Palabra
-        Dim palabrasPosibles = From w In Palabras Where w.Dificultad = dificultad
+    Public Sub GetRandomWord(numeroChars As Integer)
+        Dim palabrasPosibles = From w In Palabras Where w.NumeroLetras = numeroChars
         Dim numeroPalabras = palabrasPosibles.Count()
-
-        ''TODO si es 0 return nothing o lanzar excepcion
-
         Dim randomIndex = New Random().Next(0, numeroPalabras)
-        Return palabrasPosibles(randomIndex)
-    End Function
+        palabraGenerada = palabrasPosibles(randomIndex)
+    End Sub
 
-    Public Function GreenYellowGray(pal As String, dificultad As Integer) As TipoAcierto()
+    Public Function GreenYellowGray(pal As String) As TipoAcierto()
         ''TODO no se repita la misma palbra dos veces en una misma sesion
         ''TODO obtener la palbra valida actual
 
         'Dim palab As Palabra = GetRandomWord(dificultad)
-        Dim palab As String = "apple".ToUpper
+        Dim palab As String = palabraGenerada.Texto.ToUpper
         Dim pAr(pal.Length) As TipoAcierto
 
         For i = 0 To palab.Length - 1

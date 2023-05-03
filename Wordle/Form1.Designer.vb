@@ -23,7 +23,6 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnELIMINAR = New System.Windows.Forms.Button()
         Me.btnENVIAR = New System.Windows.Forms.Button()
         Me.btnM = New System.Windows.Forms.Button()
@@ -57,19 +56,11 @@ Partial Class Form1
         Me.lbldeldia = New System.Windows.Forms.Label()
         Me.lbllapalabra = New System.Windows.Forms.Label()
         Me.btnbarras = New System.Windows.Forms.Button()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2.SuspendLayout()
+        Me.grpTeclado = New System.Windows.Forms.GroupBox()
+        Me.grpMenu = New System.Windows.Forms.GroupBox()
+        Me.grpTeclado.SuspendLayout()
+        Me.grpMenu.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Location = New System.Drawing.Point(-6, 117)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(1071, 16)
-        Me.GroupBox1.TabIndex = 161
-        Me.GroupBox1.TabStop = False
         '
         'btnELIMINAR
         '
@@ -365,7 +356,7 @@ Partial Class Form1
         'btnconfig
         '
         Me.btnconfig.Image = CType(resources.GetObject("btnconfig.Image"), System.Drawing.Image)
-        Me.btnconfig.Location = New System.Drawing.Point(842, 34)
+        Me.btnconfig.Location = New System.Drawing.Point(702, 48)
         Me.btnconfig.Margin = New System.Windows.Forms.Padding(4)
         Me.btnconfig.Name = "btnconfig"
         Me.btnconfig.Size = New System.Drawing.Size(57, 46)
@@ -376,92 +367,105 @@ Partial Class Form1
         '
         Me.lbldeldia.Font = New System.Drawing.Font("Segoe UI", 15.25!)
         Me.lbldeldia.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lbldeldia.Location = New System.Drawing.Point(470, 53)
+        Me.lbldeldia.Location = New System.Drawing.Point(317, 67)
         Me.lbldeldia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbldeldia.Name = "lbldeldia"
-        Me.lbldeldia.Size = New System.Drawing.Size(121, 48)
+        Me.lbldeldia.Size = New System.Drawing.Size(111, 48)
         Me.lbldeldia.TabIndex = 129
         Me.lbldeldia.Text = "DEL DIA"
         '
         'lbllapalabra
         '
-        Me.lbllapalabra.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbllapalabra.Font = New System.Drawing.Font("Sans Serif Collection", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbllapalabra.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.lbllapalabra.Location = New System.Drawing.Point(427, 5)
+        Me.lbllapalabra.Location = New System.Drawing.Point(250, 19)
         Me.lbllapalabra.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbllapalabra.Name = "lbllapalabra"
-        Me.lbllapalabra.Size = New System.Drawing.Size(223, 48)
+        Me.lbllapalabra.Size = New System.Drawing.Size(269, 48)
         Me.lbllapalabra.TabIndex = 128
         Me.lbllapalabra.Text = "LA PALABRA"
         '
         'btnbarras
         '
         Me.btnbarras.Image = CType(resources.GetObject("btnbarras.Image"), System.Drawing.Image)
-        Me.btnbarras.Location = New System.Drawing.Point(159, 29)
+        Me.btnbarras.Location = New System.Drawing.Point(1, 46)
         Me.btnbarras.Margin = New System.Windows.Forms.Padding(4)
         Me.btnbarras.Name = "btnbarras"
         Me.btnbarras.Size = New System.Drawing.Size(56, 48)
         Me.btnbarras.TabIndex = 126
         Me.btnbarras.UseVisualStyleBackColor = True
         '
-        'GroupBox2
+        'grpTeclado
         '
-        Me.GroupBox2.Controls.Add(Me.btnK)
-        Me.GroupBox2.Controls.Add(Me.btnQ)
-        Me.GroupBox2.Controls.Add(Me.btnELIMINAR)
-        Me.GroupBox2.Controls.Add(Me.btnW)
-        Me.GroupBox2.Controls.Add(Me.btnENVIAR)
-        Me.GroupBox2.Controls.Add(Me.btnE)
-        Me.GroupBox2.Controls.Add(Me.btnM)
-        Me.GroupBox2.Controls.Add(Me.btnR)
-        Me.GroupBox2.Controls.Add(Me.btnN)
-        Me.GroupBox2.Controls.Add(Me.btnT)
-        Me.GroupBox2.Controls.Add(Me.btnB)
-        Me.GroupBox2.Controls.Add(Me.btnY)
-        Me.GroupBox2.Controls.Add(Me.btnV)
-        Me.GroupBox2.Controls.Add(Me.btnU)
-        Me.GroupBox2.Controls.Add(Me.btnC)
-        Me.GroupBox2.Controls.Add(Me.btnI)
-        Me.GroupBox2.Controls.Add(Me.btnX)
-        Me.GroupBox2.Controls.Add(Me.btnO)
-        Me.GroupBox2.Controls.Add(Me.btnZ)
-        Me.GroupBox2.Controls.Add(Me.btnP)
-        Me.GroupBox2.Controls.Add(Me.btnÑ)
-        Me.GroupBox2.Controls.Add(Me.btnA)
-        Me.GroupBox2.Controls.Add(Me.btnL)
-        Me.GroupBox2.Controls.Add(Me.btnS)
-        Me.GroupBox2.Controls.Add(Me.btnD)
-        Me.GroupBox2.Controls.Add(Me.btnJ)
-        Me.GroupBox2.Controls.Add(Me.btnF)
-        Me.GroupBox2.Controls.Add(Me.btnH)
-        Me.GroupBox2.Controls.Add(Me.btnG)
-        Me.GroupBox2.Location = New System.Drawing.Point(360, 802)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(623, 234)
-        Me.GroupBox2.TabIndex = 162
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "GroupBox2"
+        Me.grpTeclado.Controls.Add(Me.btnK)
+        Me.grpTeclado.Controls.Add(Me.btnQ)
+        Me.grpTeclado.Controls.Add(Me.btnELIMINAR)
+        Me.grpTeclado.Controls.Add(Me.btnW)
+        Me.grpTeclado.Controls.Add(Me.btnENVIAR)
+        Me.grpTeclado.Controls.Add(Me.btnE)
+        Me.grpTeclado.Controls.Add(Me.btnM)
+        Me.grpTeclado.Controls.Add(Me.btnR)
+        Me.grpTeclado.Controls.Add(Me.btnN)
+        Me.grpTeclado.Controls.Add(Me.btnT)
+        Me.grpTeclado.Controls.Add(Me.btnB)
+        Me.grpTeclado.Controls.Add(Me.btnY)
+        Me.grpTeclado.Controls.Add(Me.btnV)
+        Me.grpTeclado.Controls.Add(Me.btnU)
+        Me.grpTeclado.Controls.Add(Me.btnC)
+        Me.grpTeclado.Controls.Add(Me.btnI)
+        Me.grpTeclado.Controls.Add(Me.btnX)
+        Me.grpTeclado.Controls.Add(Me.btnO)
+        Me.grpTeclado.Controls.Add(Me.btnZ)
+        Me.grpTeclado.Controls.Add(Me.btnP)
+        Me.grpTeclado.Controls.Add(Me.btnÑ)
+        Me.grpTeclado.Controls.Add(Me.btnA)
+        Me.grpTeclado.Controls.Add(Me.btnL)
+        Me.grpTeclado.Controls.Add(Me.btnS)
+        Me.grpTeclado.Controls.Add(Me.btnD)
+        Me.grpTeclado.Controls.Add(Me.btnJ)
+        Me.grpTeclado.Controls.Add(Me.btnF)
+        Me.grpTeclado.Controls.Add(Me.btnH)
+        Me.grpTeclado.Controls.Add(Me.btnG)
+        Me.grpTeclado.ForeColor = System.Drawing.Color.Black
+        Me.grpTeclado.Location = New System.Drawing.Point(360, 759)
+        Me.grpTeclado.Name = "grpTeclado"
+        Me.grpTeclado.Size = New System.Drawing.Size(623, 277)
+        Me.grpTeclado.TabIndex = 162
+        Me.grpTeclado.TabStop = False
+        Me.grpTeclado.Text = "GroupBox2"
+        '
+        'grpMenu
+        '
+        Me.grpMenu.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.grpMenu.Controls.Add(Me.lbllapalabra)
+        Me.grpMenu.Controls.Add(Me.btnbarras)
+        Me.grpMenu.Controls.Add(Me.lbldeldia)
+        Me.grpMenu.Controls.Add(Me.btnconfig)
+        Me.grpMenu.Location = New System.Drawing.Point(170, 9)
+        Me.grpMenu.Name = "grpMenu"
+        Me.grpMenu.Size = New System.Drawing.Size(760, 109)
+        Me.grpMenu.TabIndex = 163
+        Me.grpMenu.TabStop = False
+        Me.grpMenu.Text = "GroupBox3"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1902, 1033)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.btnconfig)
-        Me.Controls.Add(Me.lbldeldia)
-        Me.Controls.Add(Me.lbllapalabra)
-        Me.Controls.Add(Me.btnbarras)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(18, Byte), Integer), CType(CType(19, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(1321, 933)
+        Me.Controls.Add(Me.grpMenu)
+        Me.Controls.Add(Me.grpTeclado)
+        Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(218, Byte), Integer), CType(CType(220, Byte), Integer))
         Me.KeyPreview = True
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Form1"
         Me.Text = "Form1"
-        Me.GroupBox2.ResumeLayout(False)
+        Me.grpTeclado.ResumeLayout(False)
+        Me.grpMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents btnELIMINAR As Button
     Friend WithEvents btnENVIAR As Button
     Friend WithEvents btnM As Button
@@ -495,5 +499,6 @@ Partial Class Form1
     Friend WithEvents lbldeldia As Label
     Friend WithEvents lbllapalabra As Label
     Friend WithEvents btnbarras As Button
-    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents grpTeclado As GroupBox
+    Friend WithEvents grpMenu As GroupBox
 End Class

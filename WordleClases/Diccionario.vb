@@ -1,8 +1,10 @@
 ﻿Imports System.IO
+Imports System.Windows.Forms
 
 Public Class Diccionario
     Private ReadOnly Palabras As New List(Of Palabra)
 
+    Private ReadOnly RutaFichero As String = Path.Combine(Path.Combine(Directory.GetParent(Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath))).FullName, "PalabrasLeer"), "Palabras.txt")
     Private palabraGenerada As Palabra
     Public Enum TipoAcierto
         Acertado
@@ -10,18 +12,18 @@ Public Class Diccionario
         Erroneo
     End Enum
 
-    Public Sub New(rutaArchivoLeer As String)
-
-        Dim lineas() As String = File.ReadAllLines(rutaArchivoLeer)
+    Public Sub New()
+        Dim lineas() As String = File.ReadAllLines(RutaFichero)
         For Each linea In lineas
             Dim partes() As String = linea.Split(",")
-            Dim texto As String = partes(0)
-            Dim dificultad As Integer = Integer.Parse(partes(1))
-            Dim numeroLetras As Integer = texto.Length
-            Dim palabra As New Palabra(texto, dificultad, numeroLetras)
-            Palabras.Add(palabra)
+            For Each texto In partes
+                Dim numeroLetras As Integer = texto.Length
+                Dim palabra As New Palabra(texto, numeroLetras)
+                Palabras.Add(palabra)
+            Next
         Next
     End Sub
+
 
     Public Sub AddWord(palabra As Palabra)
         Me.Palabras.Add(palabra)

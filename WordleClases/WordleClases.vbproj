@@ -82,6 +82,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Palabra.vb" />
+    <Compile Include="Usuario.vb" />
+    <Compile Include="Usuarios.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

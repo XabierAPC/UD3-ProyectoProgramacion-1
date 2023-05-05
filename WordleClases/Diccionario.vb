@@ -6,13 +6,21 @@ Public Class Diccionario
 
     Private ReadOnly RutaFichero As String = Path.Combine(Path.Combine(Directory.GetParent(Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath))).FullName, "PalabrasLeer"), "Palabras.txt")
     Private palabraGenerada As Palabra
+    Private user As Usuario
+
+    Public ReadOnly Property _palabraGenerada
+        Get
+            Return palabraGenerada
+        End Get
+    End Property
     Public Enum TipoAcierto
         Acertado
         Regular
         Erroneo
     End Enum
 
-    Public Sub New()
+    Public Sub New(user As Usuario)
+        Me.user = user
         Dim lineas() As String = File.ReadAllLines(RutaFichero)
         For Each linea In lineas
             Dim partes() As String = linea.Split(",")
@@ -72,5 +80,13 @@ Public Class Diccionario
 
         Next
         Return pAr
+    End Function
+
+    Public Function HaGanado(palabraformada As String) As Boolean
+        If palabraformada.ToUpper = palabraGenerada.Texto.ToUpper Then
+            user.PartidaFinalizada(True)
+            Return True
+        End If
+        Return False
     End Function
 End Class

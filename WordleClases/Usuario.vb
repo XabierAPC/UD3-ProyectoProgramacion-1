@@ -22,6 +22,10 @@
         End Set
     End Property
 
+    Public Property PartidasJugadas()
+    Public Property PartidasGanadas()
+    Public Property RachaActual()
+    Public Property MejorRacha()
     Public Sub New(username As String, password As String)
         Me.Username = username
         Me.Password = password
@@ -35,4 +39,20 @@
         Return other IsNot Nothing AndAlso
                _username.ToUpper() = other._username.ToUpper()
     End Function
+
+    Public Sub PartidaFinalizada(esGanador As Boolean)
+        PartidasJugadas += 1
+        If esGanador Then
+            PartidasGanadas += 1
+            RachaActual += 1
+        Else
+            RachaActual = 0
+        End If
+
+        If MejorRacha < RachaActual Then
+            RachaActual = MejorRacha
+        End If
+
+        MsgBox("Partida finalizada")
+    End Sub
 End Class

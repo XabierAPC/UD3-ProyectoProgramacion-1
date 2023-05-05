@@ -1,6 +1,5 @@
-﻿Imports System.Net.NetworkInformation
-Imports Microsoft.VisualBasic.ApplicationServices
-Imports WordleClases
+﻿Imports WordleClases
+Imports Wordle
 Public Class Form1
     Dim u As New Usuarios()
     Private Sub MensajeDeErrorLogin(labelActuar As Label, mensajeUsuario As String)
@@ -13,31 +12,25 @@ Public Class Form1
         labelActuar.Visible = False
     End Sub
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        Dim exitOnNextPair As Boolean = False
-
-        If String.IsNullOrEmpty(txtUserName.Text) Then
-            MensajeDeErrorLogin(lblLoginUsername, "Por favor introduzca un nombre de usuario")
-            exitOnNextPair = True
-        End If
-
-        If String.IsNullOrEmpty(txtPassword.Text) Then
-            MensajeDeErrorLogin(lblLoginPassword, "Por favor introduzca una contrasena")
-            exitOnNextPair = True
-        End If
-
-        If exitOnNextPair Then
-            Exit Sub
-        End If
-
-        Dim user As New Usuario(txtUserName.Text, txtPassword.Text)
-
-        If u.EsUsuarioValido(user) Then
-            MensajeDeErrorLogin(lblLoginUsername, "El usuario NO existe")
-            exitOnNextPair = True
-        End If
-
-        If exitOnNextPair Then
-            Exit Sub
+        Dim resultado As TipoError = u.ValidarUsuario(txtUserName.Text, txtPassword.Text)
+        If resultado <> Nothing Then
+            Select Case resultado
+                Case TipoError.UsuarioVacio
+                    MensajeDeErrorLogin(lblLoginUsername, "Por favor introduzca un nombre de usuario")
+                Case TipoError.ContrasenaVacia
+                    MensajeDeErrorLogin(lblLoginPassword, "Por favor introduzca una contrasena")
+                Case TipoError.AmbosVacios
+                    MensajeDeErrorLogin(lblLoginUsername, "Por favor introduzca un nombre de usuario")
+                    MensajeDeErrorLogin(lblLoginPassword, "Por favor introduzca una contrasena")
+                Case TipoError.UsuarioNoExiste
+                    MensajeDeErrorLogin(lblLoginUsername, "El usuario no existe")
+                Case TipoError.ContrasenaIncorrecta
+                    MensajeDeErrorLogin(lblLoginPassword, "La contrasena es incorrecta")
+            End Select
+        Else
+            MsgBox("Usuario Logeado")
+            Dim word As New Wordle.Form1
+            word.Show()
         End If
     End Sub
 
@@ -61,59 +54,34 @@ Public Class Form1
     End Sub
 
     Private Sub Register_Click(sender As Object, e As EventArgs) Handles Register.Click
-        Dim exitOnNextPair As Boolean = False
-
-        If String.IsNullOrEmpty(txtRegisterUsername.Text) Then
-            MensajeDeErrorLogin(lblRegisterUsername, "Por favor introduzca un nombre de usuario")
-            exitOnNextPair = True
-        End If
-
-        If String.IsNullOrEmpty(txtRegisterPassword.Text) Then
-            MensajeDeErrorLogin(lblRegisterPassword, "Por favor introduzca una contrasena")
-            exitOnNextPair = True
-        End If
-
-        If String.IsNullOrEmpty(txtRegisterRePassword.Text) Then
-            MensajeDeErrorLogin(lblRegisterRePassword, "Por favor introduzca una contrasena")
-            exitOnNextPair = True
-        End If
-
-        If exitOnNextPair Then
-            Exit Sub
-        End If
-
-        If txtRegisterUsername.Text.Length < 4 Then
-            MensajeDeErrorLogin(lblRegisterUsername, "El nombre de usuario debe tener al menos 4 caracteres")
-            exitOnNextPair = True
-        End If
-
-        If txtRegisterPassword.Text.Length < 6 Then
-            MensajeDeErrorLogin(lblRegisterPassword, "La contrasena debe tener al menos 6 caracteres")
-            exitOnNextPair = True
-        End If
-
-        If exitOnNextPair Then
-            Exit Sub
-        End If
-
-        Dim user As New Usuario(txtRegisterUsername.Text, txtRegisterPassword.Text)
-
-        If Not u.EsUsuarioValido(user) Then
-            MensajeDeErrorLogin(lblRegisterUsername, "El usuario ya existe")
-            exitOnNextPair = True
-        End If
-
-        If exitOnNextPair Then
-            Exit Sub
-        End If
-
-        If txtRegisterPassword.Text <> txtRegisterRePassword.Text Then
-            MensajeDeErrorLogin(lblRegisterRePassword, "La contrasena no coincide")
-            exitOnNextPair = True
-        End If
-
-        If exitOnNextPair Then
-            Exit Sub
+        Dim resultado As TipoError = u.AnadirUsuario(txtRegisterUsername.Text, txtRegisterPassword.Text, txtRegisterRePassword.Text)
+        If resultado <> Nothing Then
+            Select Case resultado
+                Case TipoError.UsuarioVacio
+                    MensajeDeErrorLogin(lblRegisterUsername, "Por favor introduzca un nombre de usuario")
+                Case TipoError.ContrasenaVacia
+                    MensajeDeErrorLogin(lblRegisterPassword, "Por favor introduzca una contrasena")
+                Case TipoError.RepetirContrasenaVacia
+                    MensajeDeErrorLogin(lblRegisterRePassword, "Por favor introduzca una contrasena")
+                Case TipoError.AmbosVacios
+                    MensajeDeErrorLogin(lblRegisterUsername, "Por favor introduzca un nombre de usuario")
+                    MensajeDeErrorLogin(lblRegisterPassword, "Por favor introduzca una contrasena")
+                    MensajeDeErrorLogin(lblRegisterRePassword, "Por favor introduzca una contrasena")
+                Case TipoError.UsuarioLongitudIncorrecta
+                    MensajeDeErrorLogin(lblRegisterUsername, "La longitud mayor a 4 caracteres")
+                Case TipoError.ContrasenaLongitudIncorrecta
+                    MensajeDeErrorLogin(lblRegisterPassword, "La longitud mayor a 6 caracteres")
+                Case TipoError.AmbasLongitudesIncorrectas
+                    MensajeDeErrorLogin(lblRegisterUsername, "La longitud mayor a 4 caracteres")
+                    MensajeDeErrorLogin(lblRegisterPassword, "La longitud mayor a 6 caracteres")
+                Case TipoError.UsuarioYaExiste
+                    MensajeDeErrorLogin(lblRegisterUsername, "El usuario ya existe")
+                Case TipoError.ContrasenaNoCoincide
+                    MensajeDeErrorLogin(lblRegisterRePassword, "La contrasena no coincide")
+            End Select
+        Else
+            MsgBox("Usuario Registrado")
+            pnlRegister.Hide()
         End If
     End Sub
 

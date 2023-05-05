@@ -124,6 +124,10 @@
       <Project>{d7015d86-04ca-4e5d-b698-a4d088fa5d48}</Project>
       <Name>WordleClases</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Wordle\Wordle.vbproj">
+      <Project>{d863e2cf-77ea-4927-85bc-15a479c2369b}</Project>
+      <Name>Wordle</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Authentication_User.png" />

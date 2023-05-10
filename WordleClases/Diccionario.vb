@@ -82,9 +82,15 @@ Public Class Diccionario
         Return pAr
     End Function
 
-    Public Function HaGanado(palabraformada As String) As Boolean
+    Public Function HaGanado(palabraformada As String, indexLabelActual As Integer) As Boolean
+
+
         If palabraformada.ToUpper = palabraGenerada.Texto.ToUpper Then
-            user.PartidaFinalizada(True)
+            Globales.listaUsuarios.AgregarPuntuacion(user.Username, True)
+            'user.PartidaFinalizada(True)
+            Return True
+        ElseIf indexLabelActual = 30 Then
+            Globales.listaUsuarios.AgregarPuntuacion(user.Username, False)
             Return True
         End If
         Return False

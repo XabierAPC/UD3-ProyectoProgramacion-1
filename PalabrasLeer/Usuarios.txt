@@ -1,2 +1,3 @@
-admin:admin
-pepe:pepe
+admin:admin:0:0:0:0
+pepe:pepe:0:6:10:12
+ruben:123456:0:0:0:0

@@ -1,7 +1,7 @@
 ﻿Imports WordleClases
 Imports Wordle
 Public Class Form1
-    Dim u As New Usuarios()
+
     Private Sub MensajeDeErrorLogin(labelActuar As Label, mensajeUsuario As String)
         If Not String.IsNullOrEmpty(mensajeUsuario) Then
             labelActuar.Text = mensajeUsuario
@@ -10,9 +10,10 @@ Public Class Form1
     End Sub
     Private Sub LimpiarErrores(labelActuar As Label)
         labelActuar.Visible = False
+
     End Sub
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        Dim resultado As TipoError = u.ValidarUsuario(txtUserName.Text, txtPassword.Text)
+        Dim resultado As TipoError = Globales.listaUsuarios.ValidarUsuario(txtUserName.Text, txtPassword.Text)
         If resultado <> Nothing Then
             Select Case resultado
                 Case TipoError.UsuarioVacio
@@ -31,6 +32,7 @@ Public Class Form1
             MsgBox("Usuario Logeado")
             Dim word As New Wordle.Form1
             word.Show()
+            Me.Hide()
         End If
     End Sub
 
@@ -54,7 +56,7 @@ Public Class Form1
     End Sub
 
     Private Sub Register_Click(sender As Object, e As EventArgs) Handles Register.Click
-        Dim resultado As TipoError = u.AnadirUsuario(txtRegisterUsername.Text, txtRegisterPassword.Text, txtRegisterRePassword.Text)
+        Dim resultado As TipoError = Globales.listaUsuarios.AnadirUsuario(txtRegisterUsername.Text, txtRegisterPassword.Text, txtRegisterRePassword.Text)
         If resultado <> Nothing Then
             Select Case resultado
                 Case TipoError.UsuarioVacio
@@ -81,6 +83,7 @@ Public Class Form1
             End Select
         Else
             MsgBox("Usuario Registrado")
+            Globales.listaUsuarios.GuardarUsuarios()
             pnlRegister.Hide()
         End If
     End Sub
@@ -91,5 +94,9 @@ Public Class Form1
 
     Private Sub linkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel1.LinkClicked
         pnlRegister.Show()
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Globales.listaUsuarios = New Usuarios()
     End Sub
 End Class

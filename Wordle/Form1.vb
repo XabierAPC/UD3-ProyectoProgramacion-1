@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Drawing.Text
+Imports System.IO
 Imports WordleClases
 Imports WorldleUtilidades
 Public Class Form1
@@ -32,8 +33,8 @@ Public Class Form1
 
     Private Sub CargarJuego()
         'Generate random word
-        Globales.GameObjectManager.GetRandomWord(numeroColumnas)
-        MsgBox(GameObjectManager._palabraGenerada.Texto)
+        Globales.Instanciadicionario.GetRandomWord(numeroColumnas)
+        MsgBox(Instanciadicionario._palabraGenerada.Texto)
 
         'Create group box and add it to the form
 
@@ -129,13 +130,13 @@ Public Class Form1
 
         palabraFormando = palabraFormando.Substring(0, numeroColumnas)
 
-        If Not Globales.GameObjectManager.palbraEsValida(palabraFormando) Then
+        If Not Globales.Instanciadicionario.palbraEsValida(palabraFormando) Then
             Exit Sub
         End If
 
         For i = 0 To palabraFormando.Length - 1
             Dim leterLabel As Label = CType(grpContenedor.Controls(i + indiceMinimoCeldas), Label)
-            Dim intCorrespondienteAChar() As Integer = Globales.GameObjectManager.GreenYellowGray(palabraFormando)
+            Dim intCorrespondienteAChar() As Integer = Globales.Instanciadicionario.GreenYellowGray(palabraFormando)
 
             If intCorrespondienteAChar(i) = Diccionario.TipoAcierto.Acertado Then
                 leterLabel.BackColor = ColorTranslator.FromHtml("#538d4e")
@@ -146,12 +147,12 @@ Public Class Form1
                 leterLabel.BackColor = ColorTranslator.FromHtml("#3a3a3c")
             End If
         Next
-
-        If Globales.GameObjectManager.HaGanado(palabraFormando) Then
+        If Globales.Instanciadicionario.HaGanado(palabraFormando, indiceLabelActual) Then
             Dim frm2 As New Form2
             frm2.Show()
+            Globales.listaUsuarios.GuardarUsuarios()
+            Me.Dispose()
         End If
-
         indiceMaximoCeldas += numeroColumnas
         indiceMinimoCeldas += numeroColumnas
         palabraFormando = ""
@@ -182,6 +183,7 @@ Public Class Form1
 
     Private Sub btnENVIAR_Click(sender As Object, e As EventArgs) Handles btnENVIAR.Click
         EnterPresionado()
+
     End Sub
 
     Private Sub btnELIMINAR_Click(sender As Object, e As EventArgs) Handles btnELIMINAR.Click
@@ -208,5 +210,8 @@ Public Class Form1
         '    Next
         'End If
 
+
     End Sub
+
+
 End Class

@@ -22,10 +22,19 @@
         End Set
     End Property
 
-    Public Property PartidasJugadas()
-    Public Property PartidasGanadas()
-    Public Property RachaActual()
-    Public Property MejorRacha()
+    Public Property PartidasJugadas() As Integer
+    Public Property PartidasGanadas() As Integer
+    Public Property RachaActual() As Integer
+    Public Property MejorRacha() As Integer
+    Public Sub New(username As String, password As String, partidasJugadas As Integer, partidasGanadas As Integer, rachaActual As Integer, mejorRacha As Integer)
+        Me.Username = username
+        Me.Password = password
+        Me.PartidasGanadas = partidasGanadas
+        Me.PartidasJugadas = partidasJugadas
+        Me.RachaActual = rachaActual
+        Me.MejorRacha = mejorRacha
+    End Sub
+
     Public Sub New(username As String, password As String)
         Me.Username = username
         Me.Password = password
@@ -42,6 +51,7 @@
 
     Public Sub PartidaFinalizada(esGanador As Boolean)
         PartidasJugadas += 1
+
         If esGanador Then
             PartidasGanadas += 1
             RachaActual += 1
@@ -49,8 +59,9 @@
             RachaActual = 0
         End If
 
+
         If MejorRacha < RachaActual Then
-            RachaActual = MejorRacha
+            MejorRacha = RachaActual
         End If
 
         MsgBox("Partida finalizada")

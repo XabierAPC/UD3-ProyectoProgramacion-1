@@ -87,9 +87,9 @@ Partial Class Form1
         Me.pnlRegister.Controls.Add(Me.txtRegisterUsername)
         Me.pnlRegister.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlRegister.Location = New System.Drawing.Point(0, 0)
-        Me.pnlRegister.Margin = New System.Windows.Forms.Padding(4)
+        Me.pnlRegister.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pnlRegister.Name = "pnlRegister"
-        Me.pnlRegister.Size = New System.Drawing.Size(398, 533)
+        Me.pnlRegister.Size = New System.Drawing.Size(397, 533)
         Me.pnlRegister.TabIndex = 10
         '
         'lblRegisterRePassword
@@ -151,7 +151,7 @@ Partial Class Form1
         Me.txtRegisterRePassword.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRegisterRePassword.ForeColor = System.Drawing.Color.White
         Me.txtRegisterRePassword.Location = New System.Drawing.Point(68, 345)
-        Me.txtRegisterRePassword.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtRegisterRePassword.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtRegisterRePassword.Name = "txtRegisterRePassword"
         Me.txtRegisterRePassword.Size = New System.Drawing.Size(292, 17)
         Me.txtRegisterRePassword.TabIndex = 3
@@ -161,7 +161,7 @@ Partial Class Form1
         '
         Me.panel6.BackColor = System.Drawing.Color.White
         Me.panel6.Location = New System.Drawing.Point(27, 369)
-        Me.panel6.Margin = New System.Windows.Forms.Padding(4)
+        Me.panel6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panel6.Name = "panel6"
         Me.panel6.Size = New System.Drawing.Size(333, 1)
         Me.panel6.TabIndex = 23
@@ -170,7 +170,7 @@ Partial Class Form1
         '
         Me.pictureBox7.Image = Global.Autenticacion.My.Resources.Resources.Authentication_Lock
         Me.pictureBox7.Location = New System.Drawing.Point(27, 336)
-        Me.pictureBox7.Margin = New System.Windows.Forms.Padding(4)
+        Me.pictureBox7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pictureBox7.Name = "pictureBox7"
         Me.pictureBox7.Size = New System.Drawing.Size(33, 31)
         Me.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -207,7 +207,7 @@ Partial Class Form1
         Me.txtRegisterPassword.Font = New System.Drawing.Font("Consolas", 8.25!)
         Me.txtRegisterPassword.ForeColor = System.Drawing.Color.White
         Me.txtRegisterPassword.Location = New System.Drawing.Point(68, 272)
-        Me.txtRegisterPassword.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtRegisterPassword.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtRegisterPassword.Name = "txtRegisterPassword"
         Me.txtRegisterPassword.Size = New System.Drawing.Size(292, 17)
         Me.txtRegisterPassword.TabIndex = 2
@@ -233,7 +233,7 @@ Partial Class Form1
         Me.Register.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Register.ForeColor = System.Drawing.Color.Black
         Me.Register.Location = New System.Drawing.Point(28, 406)
-        Me.Register.Margin = New System.Windows.Forms.Padding(4)
+        Me.Register.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Register.Name = "Register"
         Me.Register.Size = New System.Drawing.Size(315, 41)
         Me.Register.TabIndex = 5
@@ -244,7 +244,7 @@ Partial Class Form1
         '
         Me.panel4.BackColor = System.Drawing.Color.White
         Me.panel4.Location = New System.Drawing.Point(27, 297)
-        Me.panel4.Margin = New System.Windows.Forms.Padding(4)
+        Me.panel4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panel4.Name = "panel4"
         Me.panel4.Size = New System.Drawing.Size(333, 1)
         Me.panel4.TabIndex = 13
@@ -253,7 +253,7 @@ Partial Class Form1
         '
         Me.panel5.BackColor = System.Drawing.Color.White
         Me.panel5.Location = New System.Drawing.Point(27, 225)
-        Me.panel5.Margin = New System.Windows.Forms.Padding(4)
+        Me.panel5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panel5.Name = "panel5"
         Me.panel5.Size = New System.Drawing.Size(333, 1)
         Me.panel5.TabIndex = 14
@@ -262,7 +262,7 @@ Partial Class Form1
         '
         Me.pictureBox4.Image = Global.Autenticacion.My.Resources.Resources.Authentication_Lock
         Me.pictureBox4.Location = New System.Drawing.Point(27, 263)
-        Me.pictureBox4.Margin = New System.Windows.Forms.Padding(4)
+        Me.pictureBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pictureBox4.Name = "pictureBox4"
         Me.pictureBox4.Size = New System.Drawing.Size(33, 31)
         Me.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -273,7 +273,7 @@ Partial Class Form1
         '
         Me.pictureBox5.Image = Global.Autenticacion.My.Resources.Resources.Authentication_User
         Me.pictureBox5.Location = New System.Drawing.Point(27, 192)
-        Me.pictureBox5.Margin = New System.Windows.Forms.Padding(4)
+        Me.pictureBox5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pictureBox5.Name = "pictureBox5"
         Me.pictureBox5.Size = New System.Drawing.Size(33, 31)
         Me.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -284,7 +284,7 @@ Partial Class Form1
         '
         Me.pictureBox6.BackColor = System.Drawing.Color.Black
         Me.pictureBox6.Location = New System.Drawing.Point(27, 15)
-        Me.pictureBox6.Margin = New System.Windows.Forms.Padding(4)
+        Me.pictureBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pictureBox6.Name = "pictureBox6"
         Me.pictureBox6.Size = New System.Drawing.Size(347, 138)
         Me.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -298,7 +298,7 @@ Partial Class Form1
         Me.txtRegisterUsername.Font = New System.Drawing.Font("Consolas", 8.25!)
         Me.txtRegisterUsername.ForeColor = System.Drawing.Color.White
         Me.txtRegisterUsername.Location = New System.Drawing.Point(69, 201)
-        Me.txtRegisterUsername.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtRegisterUsername.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtRegisterUsername.Name = "txtRegisterUsername"
         Me.txtRegisterUsername.Size = New System.Drawing.Size(292, 17)
         Me.txtRegisterUsername.TabIndex = 1
@@ -333,8 +333,8 @@ Partial Class Form1
         Me.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtPassword.Font = New System.Drawing.Font("Consolas", 8.25!)
         Me.txtPassword.ForeColor = System.Drawing.Color.White
-        Me.txtPassword.Location = New System.Drawing.Point(66, 270)
-        Me.txtPassword.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtPassword.Location = New System.Drawing.Point(67, 270)
+        Me.txtPassword.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(292, 17)
         Me.txtPassword.TabIndex = 31
@@ -359,8 +359,8 @@ Partial Class Form1
         Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLogin.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLogin.ForeColor = System.Drawing.Color.Black
-        Me.btnLogin.Location = New System.Drawing.Point(26, 404)
-        Me.btnLogin.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnLogin.Location = New System.Drawing.Point(27, 404)
+        Me.btnLogin.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(315, 41)
         Me.btnLogin.TabIndex = 36
@@ -371,7 +371,7 @@ Partial Class Form1
         '
         Me.panel2.BackColor = System.Drawing.Color.White
         Me.panel2.Location = New System.Drawing.Point(25, 295)
-        Me.panel2.Margin = New System.Windows.Forms.Padding(4)
+        Me.panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panel2.Name = "panel2"
         Me.panel2.Size = New System.Drawing.Size(333, 1)
         Me.panel2.TabIndex = 34
@@ -380,7 +380,7 @@ Partial Class Form1
         '
         Me.panel1.BackColor = System.Drawing.Color.White
         Me.panel1.Location = New System.Drawing.Point(25, 223)
-        Me.panel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panel1.Name = "panel1"
         Me.panel1.Size = New System.Drawing.Size(333, 1)
         Me.panel1.TabIndex = 35
@@ -389,7 +389,7 @@ Partial Class Form1
         '
         Me.pictureBox3.Image = Global.Autenticacion.My.Resources.Resources.Authentication_Lock
         Me.pictureBox3.Location = New System.Drawing.Point(25, 261)
-        Me.pictureBox3.Margin = New System.Windows.Forms.Padding(4)
+        Me.pictureBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pictureBox3.Name = "pictureBox3"
         Me.pictureBox3.Size = New System.Drawing.Size(33, 31)
         Me.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -400,7 +400,7 @@ Partial Class Form1
         '
         Me.pictureBox2.Image = Global.Autenticacion.My.Resources.Resources.Authentication_User
         Me.pictureBox2.Location = New System.Drawing.Point(25, 190)
-        Me.pictureBox2.Margin = New System.Windows.Forms.Padding(4)
+        Me.pictureBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pictureBox2.Name = "pictureBox2"
         Me.pictureBox2.Size = New System.Drawing.Size(33, 31)
         Me.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -409,8 +409,8 @@ Partial Class Form1
         '
         'pictureBox1
         '
-        Me.pictureBox1.Location = New System.Drawing.Point(25, 13)
-        Me.pictureBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.pictureBox1.Location = New System.Drawing.Point(25, 14)
+        Me.pictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.pictureBox1.Name = "pictureBox1"
         Me.pictureBox1.Size = New System.Drawing.Size(347, 138)
         Me.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -424,7 +424,7 @@ Partial Class Form1
         Me.txtUserName.Font = New System.Drawing.Font("Consolas", 8.25!)
         Me.txtUserName.ForeColor = System.Drawing.Color.White
         Me.txtUserName.Location = New System.Drawing.Point(67, 199)
-        Me.txtUserName.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtUserName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtUserName.Name = "txtUserName"
         Me.txtUserName.Size = New System.Drawing.Size(292, 17)
         Me.txtUserName.TabIndex = 30
@@ -461,7 +461,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(398, 533)
+        Me.ClientSize = New System.Drawing.Size(397, 533)
         Me.Controls.Add(Me.pnlRegister)
         Me.Controls.Add(Me.linkLabel1)
         Me.Controls.Add(Me.label4)
@@ -477,6 +477,7 @@ Partial Class Form1
         Me.Controls.Add(Me.lblLoginPassword)
         Me.Controls.Add(Me.lblLoginUsername)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.pnlRegister.ResumeLayout(False)

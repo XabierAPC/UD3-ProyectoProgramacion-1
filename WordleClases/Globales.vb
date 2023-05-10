@@ -1,3 +1,8 @@
 ﻿Public Module Globales
-    Public GameObjectManager As Diccionario
+    Public Instanciadicionario As Diccionario
+    Public User As Usuario
+    Public listaUsuarios As Usuarios
+
+
 End Module
+

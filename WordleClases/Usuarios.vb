@@ -24,7 +24,7 @@ Public Class Usuarios
         Dim lines() As String = File.ReadAllLines(RutaFichero)
         For Each line As String In lines
             Dim values() As String = line.Split(":")
-            Me._users.Add(New Usuario(values(0), values(1)))
+            Me._users.Add(New Usuario(values(0), values(1), values(2), values(3), values(4), values(5)))
         Next
     End Sub
 
@@ -81,14 +81,15 @@ Public Class Usuarios
         End If
 
         Dim userReal As New Usuario(usernanme, password)
-        Globales.GameObjectManager = New Diccionario(userReal)
+        Globales.Instanciadicionario = New Diccionario(userReal)
+        Globales.User = userReal
         Return Nothing
     End Function
 
-    Public Sub GuardarUsuarios(filename As String)
-        Using writer As New System.IO.StreamWriter(filename)
+    Public Sub GuardarUsuarios()
+        Using writer As New System.IO.StreamWriter(RutaFichero)
             For Each user As Usuario In Me._users
-                writer.WriteLine(user.Username & ":" & user.Password)
+                writer.WriteLine(user.Username & ":" & user.Password & ":" & user.RachaActual & ":" & user.MejorRacha & ":" & user.PartidasGanadas & ":" & user.PartidasJugadas)
             Next
         End Using
     End Sub
@@ -102,10 +103,10 @@ Public Class Usuarios
         Return True
     End Function
 
-    Public Function BuscarUsuario(usuario As String)
-        For Each user In Me._users
-            If user.Username.ToUpper = usuario.ToUpper Then
-                Return user
+    Public Function BuscarUsuario(usuario As String) As Usuario
+        For Each User In Me._users
+            If User.Username.ToUpper = usuario.ToUpper Then
+                Return User
             End If
         Next
         Return Nothing
@@ -118,4 +119,9 @@ Public Class Usuarios
         Next
         Return ranking
     End Function
+
+    Public Sub AgregarPuntuacion(userName As String, b As Boolean)
+        Dim user As Usuario = BuscarUsuario(userName)
+        user.PartidaFinalizada(b)
+    End Sub
 End Class

@@ -1,9 +1,9 @@
 ﻿Imports System.Drawing.Text
 Imports System.IO
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Status
 Imports WordleClases
 Imports WorldleUtilidades
 Public Class Form1
-    Dim numeroFilas As Integer = 6
     Dim numeroColumnas As Integer = 5
     Dim tamanoLabel As Integer = 62
     Dim tamanoMargen As Integer = 5
@@ -23,8 +23,30 @@ Public Class Form1
 
     Private WithEvents _keyboardListener As KeyboardListener
 
+    'TODO Parte Xabier
+    Dim panel1 As New Panel With {
+            .Dock = DockStyle.Fill,
+            .BorderStyle = BorderStyle.FixedSingle,
+            .Visible = True,
+            .BackColor = Color.Black
+        }
+    ReadOnly cbo As New ComboBox With {
+            .Width = tamanoLabel + tamanoLabel,
+            .Height = tamanoLabel,
+            .Left = ((tamanoLabel + tamanoLabel) + tamanoMargen) + tamanoMargen,
+            .Top = ((tamanoLabel + tamanoLabel) + tamanoMargen) + tamanoMargen,
+            .Text = 1
+        }
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
+
+        'TODO Parte Xabier Init
+        cbo.Items.AddRange({1, 2, 3})
+        Me.Controls.Remove(panel1)
+        Me.Controls.Remove(cbo)
+        cerrar.Hide()
+        btnApliConf.Hide()
 
         CargarJuego()
 
@@ -39,7 +61,7 @@ Public Class Form1
         'Create group box and add it to the form
 
         grpContenedor.Dock = DockStyle.Fill
-        grpContenedor.Size = New Size(numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen, numeroFilas * (tamanoLabel + tamanoMargen) + tamanoMargen)
+        grpContenedor.Size = New Size(numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen, Globales.numeroFilas * (tamanoLabel + tamanoMargen) + tamanoMargen)
         Me.Controls.Add(grpContenedor)
 
         'Set position of group box and other controls
@@ -48,10 +70,10 @@ Public Class Form1
         grpTeclado.Location = New Point(posX - (grpTeclado.Size.Width / 2), Me.Height - grpTeclado.Size.Height)
         grpMenu.Location = New Point(posX - (grpMenu.Size.Width / 2), 0)
         posX = posX - (numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
-        posY = posY - (numeroFilas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
+        posY = posY - (Globales.numeroFilas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
 
         Dim font As New Font("Arial", 24, FontStyle.Bold)
-        For i As Integer = 0 To numeroFilas - 1
+        For i As Integer = 0 To Globales.numeroFilas - 1
             posX = posX + ((numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2) - ((numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2)
             For j As Integer = 0 To numeroColumnas - 1
                 Dim nuevoLabel As New Label With {
@@ -103,7 +125,7 @@ Public Class Form1
 
     Private Sub _keyboardListener_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles _keyboardListener.KeyDown
         Dim caracteresPermitidos As String = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-        If indiceLabelActual <= numeroFilas * numeroColumnas Then
+        If indiceLabelActual <= Globales.numeroFilas * numeroColumnas Then
             Dim currentLabel As Label = CType(grpContenedor.Controls(indiceLabelActual), Label)
             Debug.WriteLine($"Current Label: {indiceLabelActual}")
 
@@ -200,9 +222,9 @@ Public Class Form1
         grpMenu.Location = New Point(posX - (grpMenu.Size.Width / 2), 0)
         'If wasLoaded Then
         '    posX = Me.Width / 2 - (numeroColumnas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
-        '    posY = Me.Height / 2 - (numeroFilas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
+        '    posY = Me.Height / 2 - (Globales.Globales.numeroFilas * (tamanoLabel + tamanoMargen) + tamanoMargen) / 2
 
-        '    For i As Integer = fix To numeroFilas * numeroColumnas + 1
+        '    For i As Integer = fix To Globales.Globales.numeroFilas * numeroColumnas + 1
         '        Dim labelToUpdate As Label = CType(Me.Controls(i), Label)
         '        Dim row As Integer = (i - inicioLabels) \ numeroColumnas
         '        Dim col As Integer = (i - inicioLabels) Mod numeroColumnas
@@ -214,5 +236,58 @@ Public Class Form1
 
     End Sub
 
+    Private Sub btnconfig_Click(sender As Object, e As EventArgs) Handles btnconfig.Click
+        Me.Controls.Add(cbo)
+        Me.Controls.Add(panel1)
 
+        panel1.Controls.Add(cerrar)
+        panel1.Controls.Add(btnApliConf)
+        panel1.Show()
+        cbo.Show()
+        cerrar.Show()
+        btnApliConf.Show()
+
+        panel1.BringToFront()
+        cerrar.BringToFront()
+        btnApliConf.BringToFront()
+        cbo.BringToFront()
+    End Sub
+    Private Sub cerrar_Click(sender As Object, e As EventArgs) Handles cerrar.Click
+        panel1.Controls.Remove(cerrar)
+        Me.Controls.Remove(cerrar)
+        Me.Controls.Remove(panel1)
+        Me.Controls.Remove(cbo)
+
+        cerrar.Hide()
+        btnApliConf.Hide()
+        panel1.Hide()
+        cbo.Hide()
+
+    End Sub
+
+    Private Sub btnApliConf_Click(sender As Object, e As EventArgs) Handles btnApliConf.Click
+        MsgBox("Configuración Aplicada")
+
+        'Prueba1
+
+        If cbo.SelectedItem <> 1 Then
+            Me.Dispose()
+
+            Dim a As New Form1
+            Globales.numeroFilas = 6 - (CInt(cbo.SelectedItem) - 1)
+            a.Show()
+        End If
+
+
+        'If cbo.Text = 2 Then
+        '    Globales.Globales.numeroFilas = 5
+        'ElseIf cbo.Text = 3 Then
+        '    Globales.Globales.numeroFilas = 4
+        'Else
+
+        '    Globales.numeroFilas = 6
+        'End If
+
+        'CargarJuego()
+    End Sub
 End Class

@@ -89,7 +89,7 @@ Public Class Diccionario
             Globales.listaUsuarios.AgregarPuntuacion(user.Username, True)
             'user.PartidaFinalizada(True)
             Return True
-        ElseIf indexLabelActual = 30 Then
+        ElseIf indexLabelActual = Globales.numeroFilas * 5 Then
             Globales.listaUsuarios.AgregarPuntuacion(user.Username, False)
             Return True
         End If

@@ -58,6 +58,8 @@ Partial Class Form1
         Me.btnbarras = New System.Windows.Forms.Button()
         Me.grpTeclado = New System.Windows.Forms.GroupBox()
         Me.grpMenu = New System.Windows.Forms.GroupBox()
+        Me.btnApliConf = New System.Windows.Forms.Button()
+        Me.cerrar = New System.Windows.Forms.Button()
         Me.grpTeclado.SuspendLayout()
         Me.grpMenu.SuspendLayout()
         Me.SuspendLayout()
@@ -448,12 +450,36 @@ Partial Class Form1
         Me.grpMenu.TabStop = False
         Me.grpMenu.Text = "GroupBox3"
         '
+        'btnApliConf
+        '
+        Me.btnApliConf.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnApliConf.ForeColor = System.Drawing.Color.Black
+        Me.btnApliConf.Location = New System.Drawing.Point(663, 108)
+        Me.btnApliConf.Name = "btnApliConf"
+        Me.btnApliConf.Size = New System.Drawing.Size(180, 55)
+        Me.btnApliConf.TabIndex = 165
+        Me.btnApliConf.Text = "Aplicar Configuración"
+        Me.btnApliConf.UseVisualStyleBackColor = True
+        '
+        'cerrar
+        '
+        Me.cerrar.Font = New System.Drawing.Font("Arial Rounded MT Bold", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cerrar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.cerrar.Location = New System.Drawing.Point(777, 27)
+        Me.cerrar.Name = "cerrar"
+        Me.cerrar.Size = New System.Drawing.Size(55, 48)
+        Me.cerrar.TabIndex = 164
+        Me.cerrar.Text = "X"
+        Me.cerrar.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(18, Byte), Integer), CType(CType(18, Byte), Integer), CType(CType(19, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1321, 933)
+        Me.Controls.Add(Me.btnApliConf)
+        Me.Controls.Add(Me.cerrar)
         Me.Controls.Add(Me.grpMenu)
         Me.Controls.Add(Me.grpTeclado)
         Me.ForeColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(218, Byte), Integer), CType(CType(220, Byte), Integer))
@@ -501,4 +527,6 @@ Partial Class Form1
     Friend WithEvents btnbarras As Button
     Friend WithEvents grpTeclado As GroupBox
     Friend WithEvents grpMenu As GroupBox
+    Friend WithEvents btnApliConf As Button
+    Friend WithEvents cerrar As Button
 End Class

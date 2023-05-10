@@ -31,6 +31,7 @@ Public Class Form1
         Else
             MsgBox("Usuario Logeado")
             Dim word As New Wordle.Form1
+            Globales.numeroFilas = 6
             word.Show()
             Me.Hide()
         End If

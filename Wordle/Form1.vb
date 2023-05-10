@@ -21,7 +21,7 @@ Public Class Form1
 
     Dim wasLoaded As Boolean = False
 
-    Private WithEvents _keyboardListener As New KeyboardListener()
+    Private WithEvents _keyboardListener As KeyboardListener
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
@@ -96,6 +96,7 @@ Public Class Form1
         indiceMaximoCeldas = numeroColumnas + indiceLabelActual
         indiceMinimoCeldas = indiceLabelActual
         finLabels = Me.Controls.Count - 1
+        _keyboardListener = New KeyboardListener()
     End Sub
 
 

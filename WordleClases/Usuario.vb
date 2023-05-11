@@ -26,7 +26,7 @@
     Public Property PartidasGanadas() As Integer
     Public Property RachaActual() As Integer
     Public Property MejorRacha() As Integer
-    Public Sub New(username As String, password As String, partidasJugadas As Integer, partidasGanadas As Integer, rachaActual As Integer, mejorRacha As Integer)
+    Public Sub New(username As String, password As String, rachaActual As Integer, mejorRacha As Integer, partidasGanadas As Integer, partidasJugadas As Integer)
         Me.Username = username
         Me.Password = password
         Me.PartidasGanadas = partidasGanadas

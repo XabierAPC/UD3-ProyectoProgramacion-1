@@ -31,22 +31,32 @@ Public Class Form1
             .BackColor = Color.Black
         }
     ReadOnly cbo As New ComboBox With {
-            .Width = tamanoLabel + tamanoLabel,
+            .Width = 100,
             .Height = tamanoLabel,
-            .Left = ((tamanoLabel + tamanoLabel) + tamanoMargen) + tamanoMargen,
-            .Top = ((tamanoLabel + tamanoLabel) + tamanoMargen) + tamanoMargen,
-            .Text = 1
+            .Left = 160,'((tamanoLabel + tamanoLabel) + tamanoMargen) + tamanoMargen,
+            .Top = 102,'((tamanoLabel + tamanoLabel) + tamanoMargen) + tamanoMargen,
+            .Text = "Normal",
+            .Font = New Font("Arial", 10, FontStyle.Bold)
         }
+    ReadOnly lblDificultad As New Label With {
+            .Width = 500,
+            .Height = 50,
+            .Left = 130%,
+            .Top = 60,
+            .Text = "Dificultad",
+            .Font = New Font("Arial", 18, FontStyle.Bold)
+    }
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
 
         'TODO Parte Xabier Init
-        cbo.Items.AddRange({1, 2, 3})
+        cbo.Items.AddRange({"Normal", "Avanzado", "Experto"})
         Me.Controls.Remove(panel1)
         Me.Controls.Remove(cbo)
         cerrar.Hide()
         btnApliConf.Hide()
+        panel1.Controls.Add(lblDificultad)
 
         CargarJuego()
 
@@ -55,8 +65,8 @@ Public Class Form1
 
     Private Sub CargarJuego()
         'Generate random word
-        Globales.Instanciadicionario.GetRandomWord(numeroColumnas)
-        MsgBox(Instanciadicionario._palabraGenerada.Texto)
+        Globales.Instanciadicionario.GetRandomWord()
+        MsgBox(Instanciadicionario._palabraGenerada)
 
         'Create group box and add it to the form
 
@@ -209,7 +219,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btnELIMINAR_Click(sender As Object, e As EventArgs) Handles btnELIMINAR.Click
+    Private Sub btnELIMINAR_Click(sender As Object, e As EventArgs)
         Dim currentLabel As Label = CType(Me.Controls(indiceLabelActual), Label)
         ReturnPresionado(currentLabel)
     End Sub
@@ -269,15 +279,18 @@ Public Class Form1
         MsgBox("Configuración Aplicada")
 
         'Prueba1
-
-        If cbo.SelectedItem <> 1 Then
-            Me.Dispose()
-
+        If cbo.SelectedItem <> "Normal" Then
             Dim a As New Form1
-            Globales.numeroFilas = 6 - (CInt(cbo.SelectedItem) - 1)
+            If cbo.SelectedItem = "Avanzado" Then
+                Globales.numeroFilas = 6 - (2 - 1)
+            ElseIf cbo.SelectedItem = "Experto" Then
+                Globales.numeroFilas = 6 - (3 - 1)
+            Else
+                Globales.numeroFilas = 6
+            End If
             a.Show()
+            Me.Dispose()
         End If
-
 
         'If cbo.Text = 2 Then
         '    Globales.Globales.numeroFilas = 5
@@ -289,5 +302,9 @@ Public Class Form1
         'End If
 
         'CargarJuego()
+    End Sub
+
+    Private Sub btnbarras_Click(sender As Object, e As EventArgs) Handles btnbarras.Click
+        Form2.Show()
     End Sub
 End Class

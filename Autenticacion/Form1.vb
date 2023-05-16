@@ -1,5 +1,7 @@
 ﻿Imports WordleClases
 Imports Wordle
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
 Public Class Form1
 
     Private Sub MensajeDeErrorLogin(labelActuar As Label, mensajeUsuario As String)
@@ -99,5 +101,41 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Globales.listaUsuarios = New Usuarios()
+
+    End Sub
+
+    Private Sub txtRegisterUsername_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles txtRegisterUsername.GotFocus
+        If txtRegisterUsername.Text = "Usuario" Then
+            txtRegisterUsername.Text = ""
+        End If
+    End Sub
+    Private Sub txtRegisterUsername_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles txtRegisterUsername.LostFocus
+        If txtRegisterUsername.Text = "" Then
+            txtRegisterUsername.Text = "Usuario"
+        End If
+    End Sub
+    Private Sub txtRegisterPassword_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles txtRegisterPassword.GotFocus
+        If txtRegisterPassword.Text = "Contraseña" Then
+            txtRegisterPassword.Text = ""
+        End If
+    End Sub
+    Private Sub txtRegisterPassword_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles txtRegisterPassword.LostFocus
+        If txtRegisterPassword.Text = "" Then
+            txtRegisterPassword.Text = "Contraseña"
+        End If
+    End Sub
+    Private Sub txtRegisterRePassword_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles txtRegisterRePassword.GotFocus
+        If txtRegisterRePassword.Text = "reintroduce la contraseña" Then
+            txtRegisterRePassword.Text = ""
+        End If
+    End Sub
+    Private Sub txtRegisterRePassword_LostFocus(ByVal sender As Object, ByVal e As EventArgs) Handles txtRegisterRePassword.LostFocus
+        If txtRegisterRePassword.Text = "" Then
+            txtRegisterRePassword.Text = "reintroduce la contraseña"
+        End If
+    End Sub
+
+    Private Sub pnlRegister_Paint(sender As Object, e As PaintEventArgs) Handles pnlRegister.Paint
+
     End Sub
 End Class

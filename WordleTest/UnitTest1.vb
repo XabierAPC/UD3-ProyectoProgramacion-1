@@ -4,19 +4,41 @@ Imports System.Text
 Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports WordleClases
 Imports System.Windows.Forms
-
+Imports Microsoft.VisualBasic.ApplicationServices
+Imports WordleClases.Diccionario
 
 <TestClass()> Public Class UnitTest1
-    'Dim directorioSolucion As String = Path.GetDirectoryName(Path.GetDirectoryName(Windows.Forms.Application.StartupPath)) ''busca donde esta el .sln
-    'Dim rutaCompletaDirectorioPadreSln As String = Directory.GetParent(directorioSolucion).FullName ''te busca la ruta absoluta de cada ordenador hasta la carpeta que contiene el .sln
-    'Dim rutaPalabrasLeer As String = Path.Combine(rutaCompletaDirectorioPadreSln, "PalabrasLeer") ''de la ruta abs ya obtenida se mueve a la carpeta PalabrasLeer
-    'Dim accesoFicherPalabras As String = Path.Combine(rutaPalabrasLeer, "Palabras.txt") ''de dicha ruta + carpeta accede al fichero Palabras.txt
-    'Dim wordle As New Diccionario(accesoFicherPalabras)
+
 
     <TestMethod()> Public Sub TestMethod1()
-        'wordle.GetRandomWord(5)
-        Dim result = 1
-        Assert.AreEqual(1, result)
+        Dim user As New Usuario("pepe", "pepe")
+        Dim v As New Usuarios()
+
+        Dim result As User = Nothing
+        Assert.AreNotEqual(v.BuscarUsuario(user.Username), result)
+    End Sub
+
+    <TestMethod()> Public Sub TestMethod2()
+        Dim u As New Usuario("test", "test")
+        Dim word As New Diccionario(u)
+        word.GetRandomWord()
+        Dim pal As String = word._palabraGenerada
+        Debug.WriteLine(pal)
+        Dim real() As TipoAcierto = word.GreenYellowGray(pal)
+        Dim expected() As TipoAcierto = {TipoAcierto.Acertado, TipoAcierto.Acertado, TipoAcierto.Acertado, TipoAcierto.Acertado, TipoAcierto.Acertado, TipoAcierto.Acertado}
+        Dim realEsValido = True
+        For Each item In real
+            If item <> TipoAcierto.Acertado Then
+                realEsValido = False
+            End If
+        Next
+
+        Dim expectedEsValido = True
+
+        Assert.IsTrue(realEsValido = expectedEsValido)
+
+
+
     End Sub
 
 End Class

@@ -2,7 +2,7 @@
 Imports Wordle
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
-Public Class Form1
+Public Class Form3
 
     Private Sub MensajeDeErrorLogin(labelActuar As Label, mensajeUsuario As String)
         If Not String.IsNullOrEmpty(mensajeUsuario) Then

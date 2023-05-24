@@ -17,7 +17,8 @@ Public Enum TipoError
 End Enum
 Public Class Usuarios
     Private _users As List(Of Usuario)
-    Private ReadOnly RutaFichero As String = Path.Combine(Path.Combine(Directory.GetParent(Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath))).FullName, "PalabrasLeer"), "Usuarios.txt")
+    Private ReadOnly RutaFichero As String = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\PalabrasLeer"), "Usuarios.txt")
+
 
     Public Sub New()
         Me._users = New List(Of Usuario)
@@ -114,11 +115,40 @@ Public Class Usuarios
 
     Public Function GetRanking() As List(Of Usuario)
         Dim ranking As New List(Of Usuario)
-        For Each user In Me._users
+        Dim zeroPartidasGanadasUsers As New List(Of Usuario)
+        Dim maxPartidasGanadas As Integer
+        Dim maxUser As Usuario
 
+        For i As Integer = 1 To Me._users.Count
+            maxPartidasGanadas = 0
+            maxUser = Nothing
+            For Each innerUser In Me._users
+
+                If Not ranking.Contains(innerUser) And innerUser.PartidasGanadas > maxPartidasGanadas Then
+                    maxPartidasGanadas = innerUser.PartidasGanadas
+                    maxUser = innerUser
+                End If
+            Next
+            If maxUser IsNot Nothing Then
+                ranking.Add(maxUser)
+            End If
         Next
+
+        For Each innerUser In Me._users
+            If innerUser.PartidasGanadas = 0 Then
+                zeroPartidasGanadasUsers.Add(innerUser)
+            End If
+        Next
+        ' Add users with 0 PartidasGanadas at the end of the ranking list
+        ranking.AddRange(zeroPartidasGanadasUsers)
         Return ranking
     End Function
+
+
+
+
+
+
 
     Public Sub AgregarPuntuacion(userName As String, b As Boolean)
         Dim user As Usuario = BuscarUsuario(userName)

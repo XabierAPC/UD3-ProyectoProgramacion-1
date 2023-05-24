@@ -3,7 +3,7 @@ Imports System.Windows.Forms
 
 Public Class Diccionario
     Private ReadOnly Palabras As New List(Of String)
-    Private ReadOnly RutaFichero As String = Path.Combine(Path.Combine(Directory.GetParent(Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath))).FullName, "PalabrasLeer"), "Palabras.txt")
+    Private ReadOnly RutaFichero As String = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\PalabrasLeer"), "Palabras.txt")
     Private palabraGenerada As String
     Private user As Usuario
 
